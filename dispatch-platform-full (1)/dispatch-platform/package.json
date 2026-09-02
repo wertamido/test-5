@@ -1,0 +1,32 @@
+{
+  "name": "freight-dispatch-platform",
+  "version": "1.0.0",
+  "description": "Full-featured trucking dispatch platform connecting truckers directly with clients - bypassing middleman dispatcher fees",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:web\" \"npm run dev:mobile\"",
+    "dev:server": "npm run dev --workspace=@dispatch/server",
+    "dev:web": "npm run dev --workspace=@dispatch/web",
+    "dev:mobile": "npm run dev --workspace=@dispatch/mobile",
+    "build": "npm run build --workspace=@dispatch/shared && npm run build --workspace=@dispatch/server && npm run build --workspace=@dispatch/web",
+    "start": "npm run start --workspace=@dispatch/server",
+    "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
+    "test": "npm run test --workspace=@dispatch/server && npm run test --workspace=@dispatch/shared",
+    "seed": "npm run seed --workspace=@dispatch/server"
+  },
+  "keywords": ["trucking", "dispatch", "logistics", "freight", "transportation"],
+  "author": "Dispatch Platform Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3",
+    "eslint": "^8.55.0",
+    "@types/node": "^20.10.5",
+    "prettier": "^3.1.1"
+  }
+}
